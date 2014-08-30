@@ -1,15 +1,15 @@
- ![page router logo](http://f.cl.ly/items/3i3n001d0s1Q031r2q1P/page.png)
+ ![yarr logo](http://f.cl.ly/items/3i3n001d0s1Q031r2q1P/page.png)
 
-  Tiny ~1200 byte Express-inspired client-side router.
+  Tiny ~1200 byte Express-inspired client-side router for React.
 
 ```js
-page('/', index)
-page('/user/:user', show)
-page('/user/:user/edit', edit)
-page('/user/:user/album', album)
-page('/user/:user/album/sort', sort)
-page('*', notfound)
-page()
+yarr('/', index)
+yarr('/user/:user', show)
+yarr('/user/:user/edit', edit)
+yarr('/user/:user/album', album)
+yarr('/user/:user/album/sort', sort)
+yarr('*', notfound)
+yarr()
 ```
 
 ## Running examples
@@ -34,7 +34,7 @@ page()
 
   __NOTE__: keep in mind these examples do not use jQuery or similar, so
   portions of the examples may be relatively verbose, though they're not
-  directly related to page.js in any way.
+  directly related to yarr.js in any way.
 
 ## API
 

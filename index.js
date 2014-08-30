@@ -93,7 +93,6 @@
     running = true;
     if (false === options.dispatch) dispatch = false;
     if (false !== options.popstate) window.addEventListener('popstate', onpopstate, false);
-    if (false !== options.click) window.addEventListener('click', onclick, false);
     if (!dispatch) return;
     var url = location.pathname + location.search + location.hash;
     page.replace(url, null, true, dispatch);
@@ -107,7 +106,6 @@
 
   page.stop = function(){
     running = false;
-    removeEventListener('click', onclick, false);
     removeEventListener('popstate', onpopstate, false);
   };
 
