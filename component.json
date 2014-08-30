@@ -1,9 +1,0 @@
-{
-  "name": "page",
-  "repo": "visionmedia/page.js",
-  "version": "1.0.0",
-  "description": "Yet Another React Router (forked from Page.js) (~1200 bytes)",
-  "keywords": ["page", "route", "router", "routes", "pushState", "yarr", "history", "react"],
-  "scripts": ["index.js"],
-  "license": "MIT"
-}

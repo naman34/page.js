@@ -1,5 +1,5 @@
 {
-  "name": "page",
+  "name": "yarr",
   "description": "Tiny client-side router (~1200 bytes)",
   "version": "1.0.0",
   "keywords": [
@@ -14,14 +14,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/page.js.git"
+    "url": "git://github.com/naman34/yarr.git"
   },
   "main": "index.js",
-  "component": {
-    "scripts": {
-      "page": "index.js"
-    }
-  },
   "devDependencies": {},
   "dependencies": {
     "react": "^0.11.1"
