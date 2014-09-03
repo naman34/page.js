@@ -6,6 +6,10 @@ var mergeInto = require('react/lib/mergeInto');
 
 module.exports = React.createClass({
 
+  getInitialState: function(){
+    return {};
+  },
+
   route: function(event){
     
     if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control')) {return;}
