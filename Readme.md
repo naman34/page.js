@@ -4,7 +4,7 @@ Yet Another React Router.
 (forked from Page.js a tiny ~1200 byte Express-inspired client-side router)
 
 ```js
-var yarr = require('yarr');
+var yarr = require('yarr.js');
 
 yarr('/', index)
 yarr('/user/:user', show)
@@ -18,6 +18,7 @@ yarr()
 ## examples
 
   In order to provide suitable example, the original examples for page.js have been removed. New examples will be added to reflect the slightly modified behaviour.
+  **Please Note**: Unlike in Page.js, you have to use yarr.Link for all links in React app for routing to work correctly. The Link Component has the same API as a normal <a> tag.
 
 ## API
 
