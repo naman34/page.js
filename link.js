@@ -46,7 +46,6 @@ module.exports = React.createClass({
     if(this.props.href){
       yarr.show(this.props.href);  
     }
-    return false;
   },
 
   render: function(){
