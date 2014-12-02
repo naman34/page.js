@@ -2,7 +2,6 @@
 
 var React = require('react');
 var yarr = require('./yarr');
-var mergeInto = require('react/lib/mergeInto');
 
 module.exports = React.createClass({
 
