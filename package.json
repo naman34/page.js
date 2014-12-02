@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/naman34/yarr.git"
+    "url": "git://github.com/nmn/yarr.git"
   },
   "main": "index.js",
   "devDependencies": {},
