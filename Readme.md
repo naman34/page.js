@@ -35,7 +35,7 @@ import {Link} from 'yarr.js';
 
 ## API
 
-### page(path, callback[, callback ...])
+### yarr(path, callback[, callback ...])
 
   Defines a route mapping `path` to the given `callback(s)`.
 
