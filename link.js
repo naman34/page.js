@@ -52,8 +52,7 @@ module.exports = React.createClass({
 
   render: function(){
 
-    var props = Obj
-    ect.assign({}, this.props);
+    var props = Object.assign({}, this.props);
     
     props.onTap = this.route;
     props.preventDefault = true;
