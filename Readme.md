@@ -20,6 +20,19 @@ yarr()
   In order to provide suitable example, the original examples for page.js have been removed. New examples will be added to reflect the slightly modified behaviour.
   **Please Note**: Unlike in Page.js, you have to use yarr.Link for all links in React app for routing to work correctly. The Link Component has the same API as a normal <a> tag.
 
+## Changelog
+
+#### v1.2.0
+- *Link* now uses React-Tappable behind the scenes. This means that you will get fast click responses on touch screens. The API on the outside remains unchanged.
+- *Link* now accepts any props that are accepted by React-Tappable. You can set the `component` attribute to use an element other than an `<a>` element. This includes custom React Classes. I have also submitted a pull request to React-Tappable that adds support for arbitrary props. I will update to the latest React-Tappable when that code is merged.
+- The previous version of `Yarr.js` only made the `Link` component available with a lowercase `l`. This is no longer the case. `Link` in capital case is now available as well. This means you can import the `Link` component in one of these ways:
+
+```
+var Link = require('yarr.js').Link;
+var {Link} = require('yarr.js');
+import {Link} from 'yarr.js';
+```
+
 ## API
 
 ### page(path, callback[, callback ...])

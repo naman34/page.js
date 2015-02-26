@@ -3,6 +3,9 @@
 var React = require('react');
 var yarr = require('./yarr');
 
+var Tappable = React.createFactory(require('react-tappable'));
+Object.assign = require('react/lib/Object.assign')
+
 module.exports = React.createClass({
 
   getInitialState: function(){
@@ -49,23 +52,17 @@ module.exports = React.createClass({
 
   render: function(){
 
-    var props = {};
-    props.href = this.props.href || '#!';
-
-    if(!!this.props.className){
-      props.className = this.props.className;
-    }
-    if(!!this.props.style){
-      props.style = this.props.style;
-    }
-    if(!!this.props.id){
-      props.id = this.props.id;
-    }
-    props.onClick = this.route;
-    // update this to support the other kinds of props as well.
+    var props = Obj
+    ect.assign({}, this.props);
+    
+    props.onTap = this.route;
+    props.preventDefault = true;
+    props.stopPropagation = true;
+    props.pressDelay = 500;
+    props.component = props.component || 'a';
     
 
-    return React.DOM.a(
+    return Tappable(
       props,
       this.props.children
     );

@@ -1,4 +1,4 @@
 var yarr = require('./yarr');
-yarr.link = require('./link');
+yarr.Link = yarr.link = require('./link');
 
 module.exports = yarr;
