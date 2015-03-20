@@ -3,7 +3,7 @@
 var React = require('react');
 var yarr = require('./yarr');
 
-var Tappable = React.createFactory(require('react-tappable'));
+var Tappable = require('react-tappable');
 Object.assign = require('react/lib/Object.assign')
 
 module.exports = React.createClass({
@@ -13,7 +13,7 @@ module.exports = React.createClass({
   },
 
   route: function(event){
-    
+
     if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control')) {return;}
 
     event.preventDefault();
@@ -46,22 +46,20 @@ module.exports = React.createClass({
     }
 
     if(this.props.href){
-      yarr.show(this.props.href);  
+      yarr.show(this.props.href);
     }
   },
 
   render: function(){
 
     var props = Object.assign({}, this.props);
-    
-    props.onTap = this.route;
-    props.preventDefault = true;
-    props.stopPropagation = true;
-    props.pressDelay = 500;
-    props.component = props.component || 'a';
-    
 
-    return Tappable(
+    props.onTap = this.route;
+    props.pressDelay = 500;
+    props.moveThreshold = 5;
+    props.component = props.component || 'a';
+
+    return React.createElement(Tappable,
       props,
       this.props.children
     );
