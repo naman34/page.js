@@ -1,9 +1,9 @@
 'use strict';
 
-var React = require('react');
-var yarr = require('./yarr');
+var React = require('react')
+var yarr = require('./yarr')
 
-var Tappable = require('react-tappable');
+var Tappable = require('react-tappable')
 Object.assign = require('react/lib/Object.assign')
 
 module.exports = React.createClass({
@@ -14,7 +14,7 @@ module.exports = React.createClass({
 
   route: function(event){
 
-    if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control')) {return;}
+    if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control') || event.button === 2 || event.button === 1) {return;}
 
     event.preventDefault();
 
@@ -51,7 +51,7 @@ module.exports = React.createClass({
     props.pressDelay = 500;
     props.moveThreshold = 5;
     props.component = props.component || 'a';
-    props.onMouseUp = function(e){
+    props.onClick = function(e){
       e.preventDefault()
     }
 
