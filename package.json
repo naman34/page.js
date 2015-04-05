@@ -1,7 +1,7 @@
 {
   "name": "yarr.js",
   "description": "Yet Another React Router (~1200 bytes)",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "keywords": [
     "page",
     "route",
@@ -22,6 +22,6 @@
     "react": "^0.12.2 || 0.13.x"
   },
   "dependencies": {
-    "react-tappable": "^0.5.0-beta.2"
+    "react-tappable": "^0.5.0-beta.3"
   }
 }
