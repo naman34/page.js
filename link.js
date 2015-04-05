@@ -51,6 +51,9 @@ module.exports = React.createClass({
     props.pressDelay = 500;
     props.moveThreshold = 5;
     props.component = props.component || 'a';
+    props.onMouseUp = function(e){
+      e.preventDefault()
+    }
 
     return React.createElement(Tappable,
       props,
