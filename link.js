@@ -18,19 +18,10 @@ module.exports = React.createClass({
 
     event.preventDefault();
 
-    var last = this.state.lastTime || 0;
-    var now = Date.now();
-
-    this.state.lastTime = now;
-
-    if(now - last < 500){
-      return;
-    }
-
     var shouldRoute = true;
     var ret = true;
 
-    if(!!this.props.onClick){
+    if(this.props.onClick){
       var evt = {};
       evt.preventDefault = function(){
         shouldRoute = false;
@@ -48,6 +39,8 @@ module.exports = React.createClass({
     if(this.props.href){
       yarr.show(this.props.href);
     }
+
+    return false
   },
 
   render: function(){
