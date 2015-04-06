@@ -14,7 +14,7 @@ module.exports = React.createClass({
 
   route: function(event){
 
-    if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control') || event.button === 2 || event.button === 1) {return;}
+    if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control') || event.getModifierState('Meta') || event.button > 1) {return;}
 
     event.preventDefault();
 
@@ -51,8 +51,9 @@ module.exports = React.createClass({
     props.pressDelay = 500;
     props.moveThreshold = 5;
     props.component = props.component || 'a';
-    props.onClick = function(e){
-      e.preventDefault()
+    props.onClick = function(event){
+      if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control') || event.getModifierState('Meta') || event.button > 1) {return;}
+      event.preventDefault()
     }
 
     return React.createElement(Tappable,
