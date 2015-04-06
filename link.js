@@ -43,6 +43,12 @@ module.exports = React.createClass({
     return false
   },
 
+  routeOnEnter: function(e){
+    if(e.keyCode === 13) {
+      this.route(e)
+    }
+  },
+
   render: function(){
 
     var props = Object.assign({}, this.props);
@@ -55,6 +61,7 @@ module.exports = React.createClass({
       if(event.getModifierState('Shift') || event.getModifierState('Alt') || event.getModifierState('Control') || event.getModifierState('Meta') || event.button > 1) {return;}
       event.preventDefault()
     }
+    props.onKeyUp = this.routeOnEnter
 
     return React.createElement(Tappable,
       props,
