@@ -15,6 +15,8 @@ yarr('*', notfound)
 yarr()
 ```
 
+[![Pair on this](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)](http://start.thinkful.com/react/?utm_source=github&utm_medium=badge&utm_campaign=yarr)
+
 ## examples
 
   In order to provide suitable example, the original examples for page.js have been removed. New examples will be added to reflect the slightly modified behaviour.
