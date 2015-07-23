@@ -22,7 +22,7 @@ module.exports = React.createClass({
       || event.button > 1)) {
       return;
     }
-    event.preventDefault();
+    event.preventDefault && event.preventDefault()
 
     var shouldRoute = true;
     var ret = true;
@@ -72,7 +72,7 @@ module.exports = React.createClass({
         || event.button > 1)) {
         return;
       }
-      event.preventDefault()
+      event.preventDefault && event.preventDefault()
     }
     props.onKeyUp = this.routeOnEnter
 
