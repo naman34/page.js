@@ -7,7 +7,8 @@ var Tappable = require('react-tappable')
 Object.assign = require('react/lib/Object.assign')
 
 module.exports = React.createClass(
-  { getInitialState: function(){
+  { displayName: 'Link'
+  , getInitialState: function(){
       return {}
     }
   , route: function(event){
