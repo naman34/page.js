@@ -1,7 +1,10 @@
 {
   "name": "yarr.js",
   "description": "Yet Another React Router (~1200 bytes)",
-  "version": "1.3.4",
+  "version": "2.0.0-beta.1",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
   "keywords": [
     "page",
     "route",
@@ -16,13 +19,23 @@
     "type": "git",
     "url": "git://github.com/nmn/yarr.git"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "devDependencies": {
-    "babel-eslint": "^3.1.26",
-    "eslint": "^0.24.1"
+    "babel-cli": "^6.3.17",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-flow-comments": "^6.3.19",
+    "babel-plugin-transform-flow-strip-types": "^6.3.15",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-config-standard": "^4.4.0",
+    "eslint-config-standard-react": "^1.2.1",
+    "eslint-plugin-babel": "^3.0.0",
+    "eslint-plugin-react": "^3.11.3",
+    "eslint-plugin-standard": "^1.3.1"
   },
   "peerDependencies": {
-    "react": "^0.12.2 || 0.13.x"
+    "react": "0.13.x || 0.14.x"
   },
   "dependencies": {
     "react-tappable": "^0.5.3"

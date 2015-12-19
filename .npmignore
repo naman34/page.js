@@ -1,2 +1,6 @@
-examples
-!build
+.DS_Store
+.flowconfig
+.gitignore
+History.md
+.eslintrc
+.babelrc
