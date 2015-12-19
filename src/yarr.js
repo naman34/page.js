@@ -187,15 +187,15 @@ function unhandled(ctx: Context) {
  * @api public
  */
 class Context {
-  /*:: init: ?boolean; */
-  /*:: canonicalPath: string; */
-  /*:: path: string; */
-  /*:: title: string; */
-  /*:: state: any; */
-  /*:: querystring: string; */
-  /*:: pathname: string; */
-  /*:: params: Array<string>; */
-  /*:: hash: string; */
+  init: boolean;
+  canonicalPath: string;
+  path: string;
+  title: string;
+  state: any;
+  querystring: string;
+  pathname: string;
+  params: Array<string>;
+  hash: string;
   constructor(path: string, state: any) {
     if (path[0] === '/' && path.indexOf(base) !== 0) {
       path = base + path
@@ -245,10 +245,10 @@ yarr.Context = Context
  * @api private
  */
 class Route {
-  /*:: path: string; */
-  /*:: method: 'GET'; */
-  /*:: keys: Array<{ name: number, optional: boolean }>; */
-  /*:: regexp: RegExp; */
+  path: string;
+  method: 'GET';
+  keys: Array<{ name: number, optional: boolean }>;
+  regexp: RegExp;
   constructor(path: string, options?: Object = {}) {
     const {sensitive, strict} = options
     this.path = path
