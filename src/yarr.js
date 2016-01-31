@@ -135,7 +135,7 @@ yarr.show = function(path: string, state: any, dispatch?: boolean): Context {
 
 yarr.replace = function(path: string, state: ?Object, init: ?boolean, dispatch: ?boolean) {
   const ctx = new Context(path, state)
-  ctx.init = init
+  ctx.init = Boolean(init)
   if (dispatch == null) dispatch = true
   if (dispatch) yarr.dispatch(ctx)
   ctx.save()
