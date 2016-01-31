@@ -83,6 +83,7 @@
     "SyntheticMouseEvent": false,
     "SyntheticDragEvent": false,
     "SyntheticWheelEvent": false,
-    "SyntheticTouchEvent": false
+    "SyntheticTouchEvent": false,
+    "Class": false
   }
 }
