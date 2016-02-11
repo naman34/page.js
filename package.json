@@ -1,9 +1,10 @@
 {
   "name": "yarr.js",
   "description": "Yet Another React Router (~1200 bytes)",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "page",
@@ -40,6 +41,7 @@
     "react": "0.13.x || 0.14.x"
   },
   "dependencies": {
+    "eslint": "^1.10.3",
     "react-tappable": "^0.5.3"
   }
 }

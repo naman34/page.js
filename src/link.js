@@ -20,6 +20,19 @@ const modifierKeyPressed = event => event.getModifierState && (
   event.button > 1
 )
 
+/* eslint-disable spaced-comment */
+/*global ILink*/
+/*::
+declare class ILink extends React.Component<void, Props, State> {
+  constructor(): ILink;
+  route(event: ReactKeyboardEvent): ?boolean;
+  routeOnEnter(e: ReactKeyboardEvent): void;
+  onClick(event: ReactKeyboardEvent): void;
+  render(): ReactElement;
+}
+*/
+/* eslint-enable spaced-comment */
+
 class Link extends React.Component<void, Props, State> {
   contructor() {
     this.route = this.route.bind(this)
@@ -92,4 +105,6 @@ Link.propTypes = {
   component: PropTypes.string
 }
 
-export default Link
+const LinkExport: Class<ILink> = Link
+
+export default LinkExport
