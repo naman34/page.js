@@ -9,8 +9,8 @@ type Props = {
   onClick(evt: Object): boolean;
   href: string;
   component?: string;
-}
-type State = void
+};
+type State = void;
 
 const modifierKeyPressed = event => event.getModifierState && (
   event.getModifierState('Shift') ||
@@ -57,13 +57,13 @@ class Link extends React.Component<void, Props, State> {
     return false
   }
 
-  routeOnEnter(e: ReactKeyboardEvent) {
+  routeOnEnter(e: ReactKeyboardEvent): void {
     if (e.keyCode === 13) {
       this.route(e)
     }
   }
 
-  onClick(event: ReactKeyboardEvent) {
+  onClick(event: ReactKeyboardEvent): void {
     if (modifierKeyPressed(event)) {
       return
     }

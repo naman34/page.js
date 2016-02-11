@@ -1,6 +1,11 @@
-'use strict'
+import yarr from './yarr'
+import L from './link'
 
-var yarr = require('./yarr')
-yarr.Link = yarr.link = require('./link')
+Object.defineProperty(yarr, '__esModule', {
+  value: true
+})
+
+yarr.default = yarr
+yarr.Link = L
 
 module.exports = yarr

@@ -9,7 +9,7 @@ let dispatch = true
  * Base path.
  */
 
-let base = ''
+let base: string = ''
 
 /**
  * Running flag.
@@ -33,14 +33,14 @@ let running
  * @api public
  */
 
-function yarr(path: string | Function, fn?: Function) {
+function yarr(path: string | Function, fn?: Function): void {
   // <callback>
   if (typeof path === 'function') {
     return yarr('*', path)
   }
 
   // route <path> to <callback ...>
-  if (typeof fn === 'function') {
+  if (typeof path === 'string' && typeof fn === 'function') {
     const route = new Route(path)
     for (let i = 1; i < arguments.length; ++i) {
       yarr.callbacks.push(route.middleware(arguments[i]))
@@ -67,7 +67,7 @@ yarr.callbacks = []
  * @api public
  */
 
-yarr.base = function(path) {
+yarr.base = function(path: string): ?string {
   if (arguments.length === 0) return base
   base = path
 }
@@ -85,7 +85,13 @@ yarr.base = function(path) {
  * @api public
  */
 
-yarr.start = function(options) {
+type YarrOptions = {
+  click?: boolean,
+  popstate?: boolean,
+  dispatch?: boolean
+};
+
+yarr.start = function(options: YarrOptions | any): void {
   options = options || {}
   if (running) return
   running = true
@@ -102,7 +108,7 @@ yarr.start = function(options) {
  * @api public
  */
 
-yarr.stop = function() {
+yarr.stop = function(): void {
   running = false
   global.removeEventListener('popstate', onpopstate, false)
 }
@@ -133,9 +139,9 @@ yarr.show = function(path: string, state: any, dispatch?: boolean): Context {
  * @api public
  */
 
-yarr.replace = function(path: string, state: ?Object, init: ?boolean, dispatch: ?boolean) {
+yarr.replace = function(path: string, state: ?Object, init: ?boolean, dispatch: ?boolean): Context {
   const ctx = new Context(path, state)
-  ctx.init = init
+  ctx.init = Boolean(init)
   if (dispatch == null) dispatch = true
   if (dispatch) yarr.dispatch(ctx)
   ctx.save()
@@ -149,7 +155,7 @@ yarr.replace = function(path: string, state: ?Object, init: ?boolean, dispatch: 
  * @api private
  */
 
-yarr.dispatch = function(ctx: Context) {
+yarr.dispatch = function(ctx: Context): void {
   var i = 0
 
   function next() {
@@ -170,7 +176,7 @@ yarr.dispatch = function(ctx: Context) {
  * @api private
  */
 
-function unhandled(ctx: Context) {
+function unhandled(ctx: Context): void {
   const current = window.location.pathname + window.location.search
   if (current === ctx.canonicalPath) return
   yarr.stop()
@@ -222,10 +228,10 @@ class Context {
       this.querystring = this.querystring.split('#')[0]
     }
   }
-  pushState() {
+  pushState(): void {
     history.pushState(this.state, this.title, this.canonicalPath)
   }
-  save() {
+  save(): void {
     history.replaceState(this.state, this.title, this.canonicalPath)
   }
 }
@@ -244,17 +250,27 @@ yarr.Context = Context
  * @param {Object} options.
  * @api private
  */
+
+type RouteOptions = {
+  sensitive?: boolean;
+  strict?: boolean;
+};
+type KeyType = {
+  name: number;
+  optional: boolean;
+};
+
 class Route {
   path: string;
   method: 'GET';
-  keys: Array<{ name: number, optional: boolean }>;
+  keys: Array<KeyType>;
   regexp: RegExp;
-  constructor(path: string, options?: Object = {}) {
+  constructor(path: string, options: RouteOptions = {}) {
     const {sensitive, strict} = options
     this.path = path
     this.method = 'GET'
     this.keys = []
-    this.regexp = pathtoRegexp(path, this.keys, sensitive, strict)
+    this.regexp = pathtoRegexp(path, this.keys, Boolean(sensitive), Boolean(strict))
   }
 
   /**
@@ -265,7 +281,7 @@ class Route {
    * @return {Function}
    * @api public
    */
-  middleware(fn: (ctx: Context, next: Function) => void) {
+  middleware(fn: (ctx: Context, next: Function) => void): (ctx: Context, next: Function) => void {
     return (ctx, next) => {
       if (this.match(ctx.path, ctx.params)) {
         return fn(ctx, next)
@@ -283,7 +299,7 @@ class Route {
    * @return {Boolean}
    * @api private
    */
-  match(path: string, params: Array<string>) {
+  match(path: string, params: Array<string>): boolean {
     const keys = this.keys
     const qsIndex = path.indexOf('?')
     const pathname = ~qsIndex ? path.slice(0, qsIndex) : path
@@ -330,7 +346,7 @@ yarr.Route = Route
  * @api private
  */
 
-function pathtoRegexp(path: string | RegExp | Array<string>, keys: Array<any>, sensitive: boolean, strict: boolean) {
+function pathtoRegexp(path: string | RegExp | Array<string>, keys: Array<any>, sensitive: boolean, strict: boolean): RegExp {
   if (path instanceof RegExp) return path
   if (path instanceof Array) path = '(' + path.join('|') + ')'
   path = path
@@ -350,14 +366,14 @@ function pathtoRegexp(path: string | RegExp | Array<string>, keys: Array<any>, s
     .replace(/([\/.])/g, '\\$1')
     .replace(/\*/g, '(.*)')
 
-  return sensitive ? new RegExp('^' + path + '$') : new RegExp('^' + path + '$', 'i')
+  return sensitive ? new RegExp(`^${path}$`) : new RegExp(`^${path}$`, 'i')
 }
 
 /**
  * Handle "populate" events.
  */
 
-function onpopstate(e: Object) {
+function onpopstate(e: Object): void {
   if (e.state) {
     var path = e.state.path
     yarr.replace(path, e.state)
@@ -367,5 +383,4 @@ function onpopstate(e: Object) {
 /**
  * Expose `yarr`.
  */
-
 module.exports = yarr

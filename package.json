@@ -1,7 +1,7 @@
 {
   "name": "yarr.js",
   "description": "Yet Another React Router (~1200 bytes)",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.3",
   "scripts": {
     "build": "babel src -d lib"
   },
