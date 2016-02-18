@@ -34,7 +34,7 @@ declare class ILink extends React.Component<void, Props, State> {
 /* eslint-enable spaced-comment */
 
 class Link extends React.Component<void, Props, State> {
-  contructor() {
+  constructor() {
     this.route = this.route.bind(this)
     this.routeOnEnter = this.routeOnEnter.bind(this)
   }
