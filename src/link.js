@@ -10,7 +10,8 @@ type Props = {
   href: string;
   component?: string;
 };
-type State = void;
+
+type RouteFn = (event: ReactKeyboardEvent) => ?boolean;
 
 const modifierKeyPressed = event => event.getModifierState && (
   event.getModifierState('Shift') ||
@@ -20,26 +21,9 @@ const modifierKeyPressed = event => event.getModifierState && (
   event.button > 1
 )
 
-/* eslint-disable spaced-comment */
-/*global ILink*/
-/*::
-declare class ILink extends React.Component<void, Props, State> {
-  constructor(): ILink;
-  route(event: ReactKeyboardEvent): ?boolean;
-  routeOnEnter(e: ReactKeyboardEvent): void;
-  onClick(event: ReactKeyboardEvent): void;
-  render(): ReactElement;
-}
-*/
-/* eslint-enable spaced-comment */
+export default class Link extends React.Component<void, Props, void> {
 
-class Link extends React.Component<void, Props, State> {
-  contructor() {
-    this.route = this.route.bind(this)
-    this.routeOnEnter = this.routeOnEnter.bind(this)
-  }
-
-  route(event: ReactKeyboardEvent): ?boolean {
+  route: RouteFn = (event) => {
     if (modifierKeyPressed(event)) {
       return null
     }
@@ -50,7 +34,7 @@ class Link extends React.Component<void, Props, State> {
 
     if (this.props.onClick) {
       var evt = {}
-      evt.preventDefault = function() {
+      evt.preventDefault = function () {
         shouldRoute = false
       }
 
@@ -68,22 +52,22 @@ class Link extends React.Component<void, Props, State> {
     }
 
     return false
-  }
+  };
 
-  routeOnEnter(e: ReactKeyboardEvent): void {
+  routeOnEnter: RouteFn = (e) => {
     if (e.keyCode === 13) {
       this.route(e)
     }
-  }
+  };
 
-  onClick(event: ReactKeyboardEvent): void {
+  onClick: RouteFn = (event) => {
     if (modifierKeyPressed(event)) {
       return
     }
     event.nativeEvent && event.preventDefault && event.preventDefault()
-  }
+  };
 
-  render(): ReactElement {
+  render (): React$Element {
     const props = Object.assign({}, this.props, {
       onTap: this.route,
       pressDelay: 500,
@@ -104,7 +88,3 @@ Link.propTypes = {
   href: PropTypes.string,
   component: PropTypes.string
 }
-
-const LinkExport: Class<ILink> = Link
-
-export default LinkExport

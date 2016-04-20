@@ -14,22 +14,6 @@
     "jsx": true
   },
   "rules": {
-    "space-before-function-paren": [2, "never"],
-    "react/display-name": 2,
-    "react/forbid-prop-types": 0,
-    "react/jsx-boolean-value": 2,
-    "react/jsx-closing-bracket-location": [2, "props-aligned"],
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-no-duplicate-props": 2,
-    "react/jsx-no-undef": 2,
-    "react/jsx-quotes": [2, "double"],
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/no-multi-comp": 2,
-    "react/prefer-es6-class": 2,
-    "react/react-in-jsx-scope": 2,
-    "react/self-closing-comp": 2,
-    "react/wrap-multilines": 2
   },
   "globals": {
     "Object": false,
@@ -72,7 +56,7 @@
     "mixed": false,
     "number": false,
     "ReactComponent": false,
-    "ReactElement": false,
+    "React$Element": false,
     "SyntheticEvent": false,
     "SyntheticClipboardEvent": false,
     "SyntheticCompositionEvent": false,
